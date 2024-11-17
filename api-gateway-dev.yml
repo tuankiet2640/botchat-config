@@ -14,19 +14,19 @@ spring:
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
-            - Path=/users/**
+            - Path=/api/v1/users/**
         - id: auth-service
           uri: lb://AUTH-SERVICE
           predicates:
-            - Path=/auth/**
+            - Path=/api/v1/auth/**
         - id: admin-service
           uri: lb://ADMIN-SERVICE
           predicates:
-            - Path=/admin/**
+            - Path=/api/v1/admin/**
         - id: logging-service
           uri: lb://LOGGING-SERVICE
           predicates:
-            - Path=/logs/**
+            - Path=/api/v1/logs/**
 
   application:
     name: api-gateway
@@ -55,5 +55,3 @@ logging:
   level:
     org.springframework: INFO
     com.example.userservice: DEBUG
-jwt:
-  secret: 1234567890
