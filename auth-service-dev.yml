@@ -1,15 +1,42 @@
-#application
 # Server Port
 server:
   port: 8082
 
-# LDAP Configuration
+# Application Name
 spring:
   application:
     name: auth-service
+
+  # Cloud Config Server
   cloud:
     config:
       uri: http://config-server:8888
+
+  # PostgreSQL Database Configuration
+  datasource:
+    url: jdbc:postgresql://postgres:5432/auth-servicedb
+    username: postgres
+    password: 12345678
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 30000
+      max-lifetime: 1800000
+      connection-timeout: 30000
+
+  # JPA & Hibernate
+  jpa:
+    database: postgresql
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  # LDAP Configuration (Optional, Keep if Needed)
   ldap:
     embedded:
       ldif: classpath:test-server.ldif
