@@ -1,0 +1,22 @@
+#application
+# Server Port
+server:
+  port: 8082
+
+# LDAP Configuration
+spring:
+  application:
+    name: auth-service
+  cloud:
+    config:
+      uri: http://config-server:8888
+  ldap:
+    embedded:
+      ldif: classpath:test-server.ldif
+      base-dn: dc=springframework,dc=org
+      port: 8389
+
+# JWT Configuration
+jwt:
+  secret: 90e041074e7a755edefc860d1947e8dd345d8c07bea083ea5d9a6dc51fe02561
+  expiration: 3600
