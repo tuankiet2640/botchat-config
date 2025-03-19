@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: admin-service
+  datasource:
+    url: jdbc:postgresql://postgres:5432/admin-servicedb
+    username: postgres
+    password: 12345678
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  cloud:
+    config:
+      uri: http://config-server:8888
+
+server:
+  port: 8081
+
+logging:
+  level:
+    org.springframework: INFO
+    com.example.userservice: DEBUG 

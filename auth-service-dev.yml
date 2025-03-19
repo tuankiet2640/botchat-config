@@ -14,7 +14,10 @@ spring:
 
   # PostgreSQL Database Configuration
   datasource:
-    url: jdbc:postgresql://host.docker.internal:5432/auth-servicedb
+    # URL for local development
+    # url: jdbc:postgresql://localhost:5432/auth-servicedb
+    # URL for Docker
+    url: jdbc:postgresql://postgres:5432/auth-servicedb
     username: postgres
     password: 12345678
     driver-class-name: org.postgresql.Driver
@@ -38,3 +41,10 @@ spring:
 jwt:
   secret: 90e041074e7a755edefc860d1947e8dd345d8c07bea083ea5d9a6dc51fe02561
   expiration: 3600
+
+logging:
+  level:
+    org.springframework: INFO
+    com.example.userservice: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.ldap: DEBUG
